@@ -71,6 +71,18 @@ def healthz():
     response = make_response({ "result": "OK - healthy" });
     return response, 200
 
+# Define metrics endpoint
+@app.route('/metrics')
+def metrics():
+    connection = get_db_connection()
+    posts = connection.execute('SELECT * FROM posts').fetchall()
+    connection.close()
+    lengthOfPosts = len(posts)
+    # We made a single connection and single query to get all the available posts
+    noOfConnections = 1; 
+    response = make_response({"db_connection_count": noOfConnections, "post_count": lengthOfPosts});
+    return response, 200
+
 # start the application on port 3111
 if __name__ == "__main__":
    app.run(host='0.0.0.0', port='3111')
