@@ -1,6 +1,6 @@
 import sqlite3
 
-from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash
+from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash, make_response
 from werkzeug.exceptions import abort
 
 # Function to get a database connection.
@@ -64,6 +64,12 @@ def create():
             return redirect(url_for('index'))
 
     return render_template('create.html')
+
+# Define the healthz endpoint
+@app.route('/healthz')
+def healthz():
+    response = make_response({ "result": "OK - healthy" });
+    return response, 200
 
 # start the application on port 3111
 if __name__ == "__main__":
