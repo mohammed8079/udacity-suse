@@ -46,7 +46,7 @@ def post(post_id):
 # Define the About Us page
 @app.route('/about')
 def about():
-    logging.info(' About Us page is retrieved!')
+    logging.info('About Us page is retrieved!')
     return render_template('about.html')
 
 # Define the post creation functionality 
@@ -89,6 +89,7 @@ def metrics():
 
 # start the application on port 3111
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.DEBUG)
+    FORMAT = '%(levelname)s:%(name)s %(asctime)s %(message)s'
+    logging.basicConfig(format=FORMAT, level=logging.DEBUG)
 
     app.run(host='0.0.0.0', port='3111')
