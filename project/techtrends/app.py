@@ -1,4 +1,5 @@
 import sqlite3
+import logging
 
 from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash, make_response
 from werkzeug.exceptions import abort
@@ -36,13 +37,16 @@ def index():
 def post(post_id):
     post = get_post(post_id)
     if post is None:
+      logging.info('Error 404: Article Number {0} Not Found!'.format(post_id))
       return render_template('404.html'), 404
     else:
+      logging.info(' Article {0} retrieved!'.format(post['title']))
       return render_template('post.html', post=post)
 
 # Define the About Us page
 @app.route('/about')
 def about():
+    logging.info(' About Us page is retrieved!')
     return render_template('about.html')
 
 # Define the post creation functionality 
@@ -60,7 +64,7 @@ def create():
                          (title, content))
             connection.commit()
             connection.close()
-
+            logging.info(' Article {0} created!'.format(title))
             return redirect(url_for('index'))
 
     return render_template('create.html')
@@ -85,4 +89,6 @@ def metrics():
 
 # start the application on port 3111
 if __name__ == "__main__":
-   app.run(host='0.0.0.0', port='3111')
+    logging.basicConfig(level=logging.DEBUG)
+
+    app.run(host='0.0.0.0', port='3111')
