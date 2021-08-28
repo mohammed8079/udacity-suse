@@ -27,7 +27,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: ./project/Dockerfile
+          file: {context}/project/Dockerfile
           push: true
           tags: mohammedmohiuddin/techtrends:latest
       - name: Image digest
