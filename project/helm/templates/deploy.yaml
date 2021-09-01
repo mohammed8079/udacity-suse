@@ -1,4 +1,4 @@
-apiVersion: apps/v1
+apiVersion: v1
 kind: Deployment
 metadata:
   name: techtrends
@@ -17,7 +17,7 @@ spec:
     spec: 
       containers:
       - name: techtrends
-        image: {{ .Values.image.repository}}:{{ .Values.image.tag}}
+        image: mohammedmohiuddin/techtrends:latest
         ports:
         - containerPort: {{ .Values.containerPort}}
         resources:
