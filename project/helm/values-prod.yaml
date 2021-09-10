@@ -4,6 +4,8 @@ namespace:
 service:
   port: 7111
 
+imagePullPolicy: Always
+
 replicaCount: 5
 
 resources:
