@@ -10,7 +10,7 @@ service:
 image:
   repository: mohammedmohiuddin/techtrends 
   tag: latest
-  imagePullPolicy: IfNotPresent
+  pullPolicy: IfNotPresent
 
 replicaCount: 1
 
