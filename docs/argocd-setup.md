@@ -6,8 +6,8 @@
 
 ### Install ArgoCD
 1. If we follow the installation docs of argocd, we might end up with errors. ArgoCD team wants the users to give required permissions required for argocd. Use the following command to avoid errors `curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" sh -s -`.
-2. copy [argocd-server-nodeport.yaml](https://github.com/udacity/nd064_course_1/blob/main/solutions/argocd/argocd-server-nodeport.yaml) and run it with `kubectl apply -f argocd-service.yaml`. Current password is `YA2hgP-1pyBXJwbS`.
-3. login to argocd: username is admin and password can be extracted with `kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d`
+2. copy file from [argocd-server-nodeport.yaml](https://github.com/udacity/nd064_course_1/blob/main/solutions/argocd/argocd-server-nodeport.yaml) or from `./project/argocd/service-argocd-nodeport.yaml`. Then run it with `kubectl create -f service-argocd-nodeport.yaml`. 
+3. login to argocd: username is admin and password can be extracted with `kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d`.Current password is `pYq-tlHkaWcnTqwQ`.
 
 ### Some commands
 1. get nodes: `kubectl get no`
