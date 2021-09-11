@@ -13,7 +13,7 @@ spec:
       valueFiles:
       - values-prod.yaml
     path: project/helm
-    repoURL: git@github.com:mohammed8079/udacity-suse.git
+    repoURL: https://github.com/mohammed8079/udacity-suse.git
     targetRevision: HEAD
 
     
